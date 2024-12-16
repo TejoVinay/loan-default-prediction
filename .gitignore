@@ -3,6 +3,19 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# VS Code
+.vscode/
+
+# Data files (as per requirement)
+*.csv
+*.xlsx
+*.xls
+*.pkl
+
+# Model files
+*.pth
+*.h5
+
 # C extensions
 *.so
 
