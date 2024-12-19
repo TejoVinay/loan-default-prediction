@@ -1,44 +1,5 @@
 # Loan Default Prediction
 
-This project implements a binary classification neural network using PyTorch to predict loan defaults. The implementation includes comprehensive exploratory data analysis (EDA) and a PyTorch-based neural network model.
-
-## Project Structure
-- `src/`: Source code for the project
-  - `data/`: Data processing utilities
-  - `models/`: Neural network implementation
-  - `utils/`: Helper functions and visualization tools
-- `notebooks/`: Jupyter notebooks for EDA and model training
-- `tests/`: Unit tests
-
-## Setup
-
-1. Clone the repository:
-    ```bash
-    git clone [repository-url]
-    ```
-
-2. Create a virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-
-3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-## Usage
-[To be added as we implement the project]
-
-## Development Process
-[To be added as we progress]
-
-
-------
-
-# Loan Default Prediction
-
 This project implements a binary classification neural network using PyTorch to predict loan defaults. The implementation includes comprehensive exploratory data analysis (EDA) and a PyTorch-based neural network model that helps predict whether a loan application will default based on various features.
 
 ## Project Overview
@@ -55,12 +16,14 @@ The model analyzes various loan application features such as:
 ```
 loan-default-prediction/
 ├── src/
-│   ├── data/
-│   │   ├── __init__.py
-│   │   └── data_processor.py      # Data processing utilities
+│   ├── __init__.py
+│   ├── main.py
+│   ├── data/ (maintain all csv files here)
+│   │   └── __init__.py
 │   ├── models/
 │   │   ├── __init__.py
-│   │   └── loan_default_model.pth # Neural network implementation
+│   │   ├── loan_default_model.pth # Best working nueral network model
+│   │   └── processing_params.pkl  # Model processing parameters
 │   └── utils/
 │       ├── __init__.py
 │       ├── data_preparation.py    # Data preparation utilities
@@ -72,12 +35,7 @@ loan-default-prediction/
 │   ├── 04_data_preparation_neural_network_build.ipynb
 │   ├── 05_final_model_nn.ipynb
 │   └── 06_predict.ipynb
-├── data/
-│   ├── cleaned_train.csv
-│   ├── test_result.csv
-│   ├── test_result_01.csv
-│   ├── testing_loan_data.csv
-│   └── training_loan_data.csv
+│  
 ├── tests/
 │   └── __init__.py
 ├── requirements.txt
@@ -112,27 +70,32 @@ loan-default-prediction/
 ## Usage
 
 ### Data Preparation and EDA
-1. Start with the EDA notebooks in order:
+1. Run the EDA notebook for cleaning training data where the data types are handled and missing values are filled through a detailed analysis of the features and their relations:
     ```bash
-    jupyter notebook notebooks/01_eda_data_inspection.ipynb
+    jupyter notebook notebooks/02_eda_data_cleaning.ipynb
     ```
    Follow through notebooks 01-03 for complete EDA process.
+   Notebook 01_eda_data_inspection.ipynb consists of initial data inspection not necessary for running the project
+   Notebook 03_eda_data_viz_and_insights.ipynb has a detailed analysis through visualizations and statistical tests to make informed decisions on feature transformation, scaling, and engineering.
 
 ### Model Training
-1. Prepare the data and build the neural network:
-    ```bash
-    jupyter notebook notebooks/04_data_preparation_neural_network_build.ipynb
-    ```
-
-2. Train and finalize the model:
+1. Prepare the data, train, and finalize the model:
     ```bash
     jupyter notebook notebooks/05_final_model_nn.ipynb
     ```
+    Notebook 04_data_preparation_neural_network_build.ipynb consists of the data preparation approach and different models built and tested for improving model performance not necessary for running the project
+    Notebook 05_final_model_nn.ipynb has the final data preparation strategy, final model trained on train-val and then tested on the test split. Preprocessing params and model params are saved.
 
 ### Making Predictions
 1. For new predictions:
     ```bash
     jupyter notebook notebooks/06_predict.ipynb
+    ```
+
+## Alternate Usage (Simpler)
+- You can alternately provide test csv to the main.py directly and run it which pulls all the required data preprocessing, model load, and predict functions from the utils package to execute the prediction process end-to-end and gives out a csv filled with the predicted values in the target variable.
+    ```bash
+    python src/main.py
     ```
 
 ## Model Architecture
@@ -142,7 +105,7 @@ The neural network implementation consists of:
 - Multiple hidden layers with configurable neurons
 - Binary classification output layer
 - Activation functions: ReLU for hidden layers, Sigmoid for output
-- Binary Cross-Entropy loss function
+- Custom Binary Cross-Entropy loss function with class weights for treating the high class imbalance in the training set
 - Adam optimizer
 
 ## Data Description
@@ -176,7 +139,3 @@ The model uses various features including:
 ## Contributing
 
 Please read through the notebooks in order to understand the implementation details. Each notebook is well-documented with markdown cells explaining the process.
-
-## License
-
-[Specify your license here]
