@@ -74,17 +74,17 @@ loan-default-prediction/
     ```bash
     jupyter notebook notebooks/02_eda_data_cleaning.ipynb
     ```
-   Follow through notebooks 01-03 for complete EDA process.
-   Notebook 01_eda_data_inspection.ipynb consists of initial data inspection not necessary for running the project
-   Notebook 03_eda_data_viz_and_insights.ipynb has a detailed analysis through visualizations and statistical tests to make informed decisions on feature transformation, scaling, and engineering.
+   - Follow through notebooks 01-03 for complete EDA process.
+   - Notebook 01_eda_data_inspection.ipynb consists of initial data inspection not necessary for running the project
+   - Notebook 03_eda_data_viz_and_insights.ipynb has a detailed analysis through visualizations and statistical tests to make informed decisions on feature transformation, scaling, and engineering.
 
 ### Model Training
 1. Prepare the data, train, and finalize the model:
     ```bash
     jupyter notebook notebooks/05_final_model_nn.ipynb
     ```
-    Notebook 04_data_preparation_neural_network_build.ipynb consists of the data preparation approach and different models built and tested for improving model performance not necessary for running the project
-    Notebook 05_final_model_nn.ipynb has the final data preparation strategy, final model trained on train-val and then tested on the test split. Preprocessing params and model params are saved.
+    - Notebook 04_data_preparation_neural_network_build.ipynb consists of the data preparation approach and different models built and tested for improving model performance not necessary for running the project
+    - Notebook 05_final_model_nn.ipynb has the final data preparation strategy, final model trained on train-val and then tested on the test split. Preprocessing params and model params are saved.
 
 ### Making Predictions
 1. For new predictions:
